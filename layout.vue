@@ -6,7 +6,7 @@
                 :class="{ 'navbar-fixed-top': $store.state.localConfig['riverty.fixed_navbar'] === true }">
                 <nav class="navbar navbar-dark">
                     <nuxt-link class="navbar-brand" to="/">{{ $store.state.config['skin.riverty.navbar_logo_text']
-                        }}</nuxt-link>
+                    }}</nuxt-link>
                     <ul class="nav navbar-nav">
                         <li class="nav-item">
                             <nuxt-link class="nav-link" to="/RecentChanges"><span class="fa fa-refresh"></span><span
@@ -103,11 +103,9 @@
                     <search-form />
                 </nav>
             </div>
-            <div class="content-wrapper"
-                :class="{ 'hide-sidebar': sidebar === 'hide' || sidebar === 'footer' }">
+            <div class="content-wrapper" :class="{ 'hide-sidebar': sidebar === 'hide' || sidebar === 'footer' }">
                 <div class="liberty-sidebar">
-                    <div class="liberty-right-fixed"
-                        :class="{ 'fixed': sidebar === 'fix' }">
+                    <div class="liberty-right-fixed" :class="{ 'fixed': sidebar === 'fix' }">
                         <div class="live-recent">
                             <div class="live-recent-header">
                                 <ul class="nav nav-tabs">
@@ -140,16 +138,16 @@
                                 <nuxt-link :to="doc_action_link($store.state.page.data.document, 'w')"><span
                                         v-if="$store.state.page.data.document.forceShowNamespace !== false"><span
                                             class="namespace">{{
-                                            $store.state.page.data.document.namespace }}</span>:</span>{{
-                                    $store.state.page.data.document.title
-                                    }}</nuxt-link>
+                                                $store.state.page.data.document.namespace }}</span>:</span>{{
+                                                $store.state.page.data.document.title
+                                            }}</nuxt-link>
                                 <div style="height:0.5rem" />
                                 <small
                                     v-if="$store.state.page.viewName === 'edit_edit_request' || $store.state.page.viewName === 'edit_request'">(편집
                                     요청)</small>
                                 <small
                                     v-else-if="$store.state.page.viewName === 'edit' && $store.state.page.data.body.section">(r{{
-                                    $store.state.page.data.body.baserev }}
+                                        $store.state.page.data.body.baserev }}
                                     문단 편집)</small>
                                 <small
                                     v-else-if="$store.state.page.viewName === 'edit' && $store.state.page.data.body.baserev === '0'">(새
@@ -170,19 +168,19 @@
                                 <small v-else-if="$store.state.page.viewName === 'diff'">(비교)</small>
                                 <small
                                     v-else-if="$store.state.page.viewName === 'revert' && $store.state.page.data.rev">(r{{
-                                    $store.state.page.data.rev }}로
+                                        $store.state.page.data.rev }}로
                                     되돌리기)</small>
                                 <small
                                     v-else-if="$store.state.page.viewName === 'raw' && $store.state.page.data.rev">(r{{
-                                    $store.state.page.data.rev }}
+                                        $store.state.page.data.rev }}
                                     RAW)</small>
                                 <small
                                     v-else-if="$store.state.page.viewName === 'blame' && $store.state.page.data.rev">(r{{
-                                    $store.state.page.data.rev }}
+                                        $store.state.page.data.rev }}
                                     Blame)</small>
                                 <small
                                     v-else-if="$store.state.page.viewName === 'wiki' && $store.state.page.data.rev">(r{{
-                                    $store.state.page.data.rev }}
+                                        $store.state.page.data.rev }}
                                     판)</small>
                             </h1>
                             <h1 v-else>{{ $store.state.page.title }}</h1>
@@ -227,8 +225,7 @@
                         </div>
                         <div class="clearfix"></div>
                     </div>
-                    <div v-if="sidebar === 'footer'"
-                        style="display:flex;justify-content:center;margin-top:1rem;">
+                    <div v-if="sidebar === 'footer'" style="display:flex;justify-content:center;margin-top:1rem;">
                         <div class="liberty-sidebar footer-sidebar" style="float:0;position:relative;display:block;">
                             <div class="liberty-right-fixed" style="position:relative;">
                                 <div class="live-recent">
@@ -353,15 +350,20 @@ export default {
             };
         },
         sidebar() {
-            var sidebar = this.$store.state.localConfig["riverty.sidebar"];
-            if (sidebar != "default" && sidebar != "fix" && sidebar != "hide") {
-                this.$store.commit('localConfigSetValue', { key: 'riverty.sidebar', value: "default" });
-                sidebar = "default";
+            if (process.client) {
+                var sidebar = this.$store.state.localConfig["riverty.sidebar"];
+                if (sidebar != "default" && sidebar != "fix" && sidebar != "hide") {
+                    this.$store.commit('localConfigSetValue', { key: 'riverty.sidebar', value: "default" });
+                    sidebar = "default";
+                }
+                if (sidebar == "default") {
+                    sidebar = isMobile ? "footer" : "right";
+                }
+                return sidebar;
             }
-            if (sidebar == "default") {
-                sidebar = isMobile ? "footer" : "right";
+            else {
+                return "default";
             }
-            return sidebar;
         },
         requestable() {
             return this.$store.state.page.data.editable === true && this.$store.state.page.data.edit_acl_message && this.$store.state.page.viewName !== 'notfound';
