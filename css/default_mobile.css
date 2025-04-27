@@ -116,6 +116,27 @@
         border-left: 1px solid #e1e8ed;
         border-right: 1px solid #e1e8ed;
     }
+
+    .Liberty .liberty-sidebar {
+        display: none;
+    }
+
+    .Liberty .footer-sidebar {
+        display: block !important;
+        width: 100% !important;
+    }
+    
+    .Liberty .footer-sidebar .liberty-right-fixed .live-recent {
+        width: 100% !important;
+    }
+    
+    .Liberty .footer-sidebar .liberty-right-fixed .live-recent .live-recent-header .nav .nav-item {
+        width: 100% !important;
+    }
+    
+    .Liberty .footer-sidebar .liberty-right-fixed .live-recent .live-recent-header .nav .nav-item .nav-link.active::before {
+        width: 100% !important;
+    }
 }
 
 /* Max-width: 798 메뉴 마지노선 테블릿 모드로 전환 시작하기위한 부분 */

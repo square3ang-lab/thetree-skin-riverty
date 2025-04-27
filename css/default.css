@@ -372,19 +372,7 @@ body {
 }
 
 .Liberty .footer-sidebar {
-    width: 25rem !important;
-}
-
-.Liberty .footer-sidebar .liberty-right-fixed .live-recent {
-    width: 100% !important;
-}
-
-.Liberty .footer-sidebar .liberty-right-fixed .live-recent .live-recent-header .nav .nav-item {
-    width: 100% !important;
-}
-
-.Liberty .footer-sidebar .liberty-right-fixed .live-recent .live-recent-header .nav .nav-item .nav-link.active::before {
-    width: 100% !important;
+    display: none;
 }
 
 .Liberty .content-wrapper .liberty-sidebar .liberty-right-fixed {

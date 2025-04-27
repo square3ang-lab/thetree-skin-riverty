@@ -103,9 +103,9 @@
                     <search-form />
                 </nav>
             </div>
-            <div class="content-wrapper" :class="{ 'hide-sidebar': sidebar === 'hide' || sidebar === 'footer' }">
+            <div class="content-wrapper" :class="{ 'hide-sidebar': this.$store.state.localConfig['riverty.sidebar'] === 'hide' }">
                 <div class="liberty-sidebar">
-                    <div class="liberty-right-fixed" :class="{ 'fixed': sidebar === 'fix' }">
+                    <div class="liberty-right-fixed" :class="{ 'fixed': this.$store.state.localConfig['riverty.sidebar'] === 'fix' }">
                         <div class="live-recent">
                             <div class="live-recent-header">
                                 <ul class="nav nav-tabs">
@@ -225,8 +225,8 @@
                         </div>
                         <div class="clearfix"></div>
                     </div>
-                    <div v-if="sidebar === 'footer'" style="display:flex;justify-content:center;margin-top:1rem;">
-                        <div class="liberty-sidebar footer-sidebar" style="float:0;position:relative;display:block;">
+                    <div style="display:flex;justify-content:center;margin-top:1rem;">
+                        <div class="liberty-sidebar footer-sidebar" style="float:0;position:relative;">
                             <div class="liberty-right-fixed" style="position:relative;">
                                 <div class="live-recent">
                                     <div class="live-recent-header">
@@ -348,22 +348,6 @@ export default {
                 '--text-color': this.selectByTheme('#373a3c', '#ddd'),
                 '--article-background-color': this.selectByTheme('#fff', '#1c1d1f'),
             };
-        },
-        sidebar() {
-            if (typeof window !== 'undefined') {
-                var sidebar = this.$store.state.localConfig["riverty.sidebar"];
-                if (sidebar != "default" && sidebar != "fix" && sidebar != "hide") {
-                    this.$store.commit('localConfigSetValue', { key: 'riverty.sidebar', value: "default" });
-                    sidebar = "default";
-                }
-                if (sidebar == "default") {
-                    sidebar = isMobile ? "footer" : "right";
-                }
-                return sidebar;
-            }
-            else {
-                return "default";
-            }
         },
         requestable() {
             return this.$store.state.page.data.editable === true && this.$store.state.page.data.edit_acl_message && this.$store.state.page.viewName !== 'notfound';
