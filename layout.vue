@@ -350,7 +350,7 @@ export default {
             };
         },
         sidebar() {
-            if (process.client) {
+            if (typeof window !== 'undefined') {
                 var sidebar = this.$store.state.localConfig["riverty.sidebar"];
                 if (sidebar != "default" && sidebar != "fix" && sidebar != "hide") {
                     this.$store.commit('localConfigSetValue', { key: 'riverty.sidebar', value: "default" });
