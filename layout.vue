@@ -3,7 +3,7 @@
         <div>
             <div id="top"></div>
             <div class="nav-wrapper"
-                :class="{ 'navbar-fixed-top': $store.state.localConfig['liberty.fixed_navbar'] === true }">
+                :class="{ 'navbar-fixed-top': $store.state.localConfig['riverty.fixed_navbar'] === true }">
                 <nav class="navbar navbar-dark">
                     <nuxt-link class="navbar-brand" to="/">{{ $store.state.config['skin.riverty.navbar_logo_text']
                         }}</nuxt-link>
@@ -104,10 +104,10 @@
                 </nav>
             </div>
             <div class="content-wrapper"
-                :class="{ 'hide-sidebar': $store.state.localConfig['liberty.sidebar'] === 'hide' || $store.state.localConfig['liberty.sidebar'] === 'footer' }">
+                :class="{ 'hide-sidebar': $store.state.localConfig['riverty.sidebar'] === 'hide' || $store.state.localConfig['riverty.sidebar'] === 'footer' }">
                 <div class="liberty-sidebar">
                     <div class="liberty-right-fixed"
-                        :class="{ 'fixed': $store.state.localConfig['liberty.sidebar'] === 'fix' }">
+                        :class="{ 'fixed': $store.state.localConfig['riverty.sidebar'] === 'fix' }">
                         <div class="live-recent">
                             <div class="live-recent-header">
                                 <ul class="nav nav-tabs">
@@ -227,7 +227,7 @@
                         </div>
                         <div class="clearfix"></div>
                     </div>
-                    <div v-if="$store.state.localConfig['liberty.sidebar'] === 'footer'"
+                    <div v-if="$store.state.localConfig['riverty.sidebar'] === 'footer'"
                         style="display:flex;justify-content:center;margin-top:1rem;">
                         <div class="liberty-sidebar footer-sidebar" style="float:0;position:relative;display:block;">
                             <div class="liberty-right-fixed" style="position:relative;">

@@ -241,7 +241,7 @@ export default {
                                 to: this.contribution_link(this.data.user.uuid),
                                 title: "기여 목록"
                             });
-                            if (this.$store.state.session.quick_block && this.$store.state.localConfig['liberty.admin_convenience'] !== false) {
+                            if (this.$store.state.session.quick_block && this.$store.state.localConfig['riverty.admin_convenience'] !== false) {
                                 this.menu.push({
                                     class: 'admin',
                                     onclick: () => this.openQuickACLGroup({
@@ -414,7 +414,7 @@ export default {
                         class: this.data.account.type === 1 ? '' : 'disabled',
                         title: "사용자 문서"
                     });
-                    if (this.$store.state.session.quick_block && this.$store.state.localConfig['liberty.admin_convenience'] !== false) {
+                    if (this.$store.state.session.quick_block && this.$store.state.localConfig['riverty.admin_convenience'] !== false) {
                         if (this.data.account.type !== -1) this.menu.push({
                             class: 'admin',
                             onclick: () => this.openQuickACLGroup({
