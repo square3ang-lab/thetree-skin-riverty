@@ -35,7 +35,7 @@
 
 .content-tools .tools-btn {
     font-size: 0.9rem;
-    padding: 0.6rem 0.7rem;
+    padding: 0.5rem 0.7rem;
 }
 
 .content-tools .tools-btn:deep().fa-star,
