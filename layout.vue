@@ -253,7 +253,7 @@
         </div>
         <div id="bottom" class="liberty-footer">
             <ul v-if="$store.state.page.viewName === 'wiki' && $store.state.page.data.date" class="footer-info">
-                <li class="footer-info-copyright" v-html="$store.state.config['wiki.copyright_text']" />
+                <li class="footer-info-copyright" v-html="$store.state.page.data.copyright_text" />
             </ul>
             <ul class="footer-places" @click="onDynamicContentClick($event)"
                 v-html="$store.state.config['skin.riverty.footer_html']" />
@@ -327,12 +327,12 @@ export default {
             return this.selectByTheme(this.$store.state.config['skin.riverty.brand_color_1'] ?? '#4188f1', '#2d2f34');
         },
         skinConfig() {
-
+            const logoUrl = this.$store.state.config['wiki.logo_url']
             return {
                 '--liberty-brand-color': this.brand_color,
                 '--liberty-brand-dark-color': this.selectByTheme(this.$store.state.config['skin.riverty.brand_dark_color_1'] ?? this.darkenColor(this.brand_color), '#16171a'),
                 '--liberty-brand-bright-color': this.selectByTheme(this.$store.state.config['skin.riverty.brand_bright_color_1'] ?? this.lightenColor(this.brand_color), '#383b40'),
-                '--liberty-navbar-logo-image': this.$store.state.config['skin.riverty.navbar_logo_image'],
+                '--liberty-navbar-logo-image': logoUrl ? `url(${logoUrl})` : this.$store.state.config['skin.liberty.navbar_logo_image'],
                 '--liberty-navbar-logo-minimum-width': this.$store.state.config['skin.riverty.navbar_logo_minimum_width'],
                 '--liberty-navbar-logo-width': this.$store.state.config['skin.riverty.navbar_logo_width'],
                 '--liberty-navbar-logo-size': this.$store.state.config['skin.riverty.navbar_logo_size'],
