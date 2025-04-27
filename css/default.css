@@ -558,6 +558,9 @@ del, s, strike {
 .Liberty .content-wrapper .liberty-content .liberty-content-main {
     border-left: 1px solid #e1e8ed;
     border-right: 1px solid #e1e8ed;
+    border-bottom: 1px solid #e1e8ed;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
     background-color: #fff;
     padding: 1rem;
     overflow: visible;
@@ -624,13 +627,14 @@ del, s, strike {
 
 /* 컨텐츠 하단 수정 */
 .Liberty .liberty-footer {
-    position: absolute;
-    left: 0;
+    bottom: 0;
+
     width: 100%;
     /*border: 1px solid #e1e8ed;*/
     /*border-radius: 0 0 1rem 1rem;*/
     background-color: #f5f8fa;
-    padding: 1rem;
+    border-top: 1px solid #e1e8ed;
+    padding: 2rem;
     clear: both;
 }
 
