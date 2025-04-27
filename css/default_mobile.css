@@ -44,6 +44,7 @@
     .Liberty .content-wrapper .liberty-content .liberty-content-header {
         display: flex;
         flex-direction: column-reverse;
+        border: 0;
     }
 
     .Liberty .content-wrapper .liberty-content .liberty-content-header .liberty-notice {
@@ -53,7 +54,7 @@
     .Liberty .content-wrapper .liberty-content .liberty-content-header .content-tools {
         text-align: right;
         padding: 0.5rem;
-        border-top: 1px solid #e1e8ed;
+        /*border-top: 1px solid #e1e8ed;*/
         float: unset;
         overflow-x: auto;
         white-space: nowrap;

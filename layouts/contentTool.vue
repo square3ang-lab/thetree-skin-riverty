@@ -2,8 +2,10 @@
     <div v-if="main.length" class="content-tools">
         <div class="btn-group">
             <template v-for="l in main" :key="l.to">
-                <a v-if="l.onclick" @click.prevent="l.onclick" href="#" class="btn btn-secondary tools-btn" :class="l.class" v-tooltip="l.tooltip" v-text="l.title" v-html="l.html"></a>
-                <nuxt-link v-else :to="l.to" class="btn btn-secondary tools-btn" :class="l.class" v-tooltip="l.tooltip" v-text="l.title" v-html="l.html"></nuxt-link>
+                <a v-if="l.onclick" @click.prevent="l.onclick" href="#" class="btn btn-secondary tools-btn"
+                    :class="l.class" v-tooltip="l.tooltip" v-text="l.title" v-html="l.html"></a>
+                <nuxt-link v-else :to="l.to" class="btn btn-secondary tools-btn" :class="l.class" v-tooltip="l.tooltip"
+                    v-text="l.title" v-html="l.html"></nuxt-link>
             </template>
             <template v-if="menu.length">
                 <dropdown class="btn btn-secondary tools-btn">
@@ -12,8 +14,10 @@
                     </template>
                     <div class="dropdown-menu dropdown-menu-right" role="menu">
                         <template v-for="m in menu" :key="m.to">
-                            <a v-if="m.onclick" @click.prevent="m.onclick" href="#" class="dropdown-item" :class="m.class">{{ m.title }}</a>
-                            <nuxt-link v-else :to="m.to" class="dropdown-item" :class="m.class">{{ m.title }}</nuxt-link>
+                            <a v-if="m.onclick" @click.prevent="m.onclick" href="#" class="dropdown-item"
+                                :class="m.class">{{ m.title }}</a>
+                            <nuxt-link v-else :to="m.to" class="dropdown-item" :class="m.class">{{ m.title
+                                }}</nuxt-link>
                         </template>
                     </div>
                 </dropdown>
@@ -31,7 +35,7 @@
 
 .content-tools .tools-btn {
     font-size: 0.9rem;
-    padding: 0.4rem 0.8rem;
+    padding: 0.6rem 0.7rem;
 }
 
 .content-tools .tools-btn:deep().fa-star,
@@ -62,7 +66,7 @@
 .theseed-dark-mode .content-tools .tools-btn:active,
 .theseed-dark-mode .content-tools .tools-btn:focus,
 .theseed-dark-mode .content-tools .tools-btn:hover {
-	background-color: #383b40;
+    background-color: #383b40;
     color: white;
 }
 
@@ -79,8 +83,8 @@
 .theseed-dark-mode .content-tools .btn.btn-danger.tools-btn:hover,
 .theseed-dark-mode .content-tools .btn.btn-danger.tools-btn:active,
 .theseed-dark-mode .content-tools .btn.btn-danger.tools-btn:focus {
-	background-color: #d9534f;
-	color: #ddd;
+    background-color: #d9534f;
+    color: #ddd;
 }
 
 .content-tools .tools-btn.btn-discuss-progress {
@@ -205,12 +209,12 @@ export default {
                         });
                         this.main.push({
                             to: this.doc_action_link(this.data.document, 'backlink'),
-                            title: "역링크"
+                            html: `<span class="fa fa-anchor"></span> 역링크`,
                         });
                         this.main.push({
                             to: this.doc_action_link(this.data.document, 'discuss'),
                             class: this.data.discuss_progress ? 'btn-discuss-progress' : null,
-                            title: "토론"
+                            html: `<span class="fa fa-comments"></span> 토론`
                         });
                         if (this.data.editable === true && this.data.edit_acl_message) this.main.push({
                             onclick: () => this.$emit('onClickEditBtn'),
@@ -226,11 +230,11 @@ export default {
                         });
                         this.main.push({
                             to: this.doc_action_link(this.data.document, 'history', this.data.rev ? { from: this.data.rev } : undefined),
-                            title: "역사"
+                            html: `<span class="fa fa-history"></span> 역사`
                         });
                         this.main.push({
                             to: this.doc_action_link(this.data.document, 'acl'),
-                            title: "ACL"
+                            html: `<span class="fa fa-shield"></span> ACL`
                         });
                         if (this.data.user) {
                             this.menu.push({

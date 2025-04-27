@@ -33,6 +33,10 @@
     border-top: 0;
 }
 
+:global(.theseed-dark-mode) .live-recent-content {
+    border-color: #777;
+}
+
 .live-recent-content .live-recent-list {
     list-style: none;
     margin: 0;

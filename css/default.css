@@ -58,7 +58,7 @@ ol {
 pre {
     background-color: #f5f8fa;
     border: 1px solid #e1e8ed;
-    border-radius: 0.35rem;
+    border-radius: 1rem;
     padding: 0.8rem;
     overflow-x: scroll;
 }
@@ -201,11 +201,12 @@ del, s, strike {
     font-size: 0.8rem;
     height: 2rem;
     width: 10.8rem;
-    padding: 0.2rem 0.4rem;
-    border-color: #e1e8ed;
+    padding: 0.4rem 0.8rem;
+    /*border-color: #e1e8ed;*/
+    border: 0;
     border-radius: 0;
-    border-top-left-radius: 0.35rem;
-    border-bottom-left-radius: 0.35rem;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
     float: none;
 }
 
@@ -269,7 +270,7 @@ del, s, strike {
 .Liberty .nav-wrapper .navbar .navbar-login .profile-img {
     width: 2rem;
     height: 2rem;
-    border-radius: 0.35rem;
+    border-radius: 1rem;
     margin: 0;
     border: 1px solid #e1e8ed;
 }
@@ -331,6 +332,22 @@ del, s, strike {
     word-break: break-all;
 }
 
+.Liberty .footer-sidebar {
+    width: 25rem !important;
+}
+
+.Liberty .footer-sidebar .liberty-right-fixed .live-recent {
+    width: 100% !important;
+}
+
+.Liberty .footer-sidebar .liberty-right-fixed .live-recent .live-recent-header .nav .nav-item {
+    width: 100% !important;
+}
+
+.Liberty .footer-sidebar .liberty-right-fixed .live-recent .live-recent-header .nav .nav-item .nav-link.active::before{
+    width: 100% !important;
+}
+
 .Liberty .content-wrapper .liberty-sidebar .liberty-right-fixed {
     position: absolute;
     z-index: 1;
@@ -351,16 +368,16 @@ del, s, strike {
 .Liberty .content-wrapper .liberty-sidebar .liberty-right-fixed .live-recent .live-recent-header .nav .nav-item {
     width: 15rem;
     border: 1px solid #e1e8ed;
-    border-top-left-radius: 0.35rem;
-    border-top-right-radius: 0.35rem;
-    background-color: #f5f8fa;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    background-color: transparent;
 }
 
 .Liberty .content-wrapper .liberty-sidebar .liberty-right-fixed .live-recent .live-recent-header .nav .nav-item .nav-link {
     border: 0;
     border-radius: 0;
-    border-top-left-radius: 0.35rem;
-    border-top-right-radius: 0.35rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
     text-align: center;
     padding-top: 0.6rem;
     padding-bottom: 0.6rem;
@@ -428,8 +445,8 @@ del, s, strike {
     background-color: #f5f8fa;
     border: 1px solid #e1e8ed;
     border-top: 0;
-    border-bottom-left-radius: 0.35rem;
-    border-bottom-right-radius: 0.35rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
     text-align: right;
     padding: 0.4rem 0.6rem;
 }
@@ -487,7 +504,7 @@ del, s, strike {
 
 .Liberty .content-wrapper .liberty-content .liberty-content-header {
     border: 1px solid #e1e8ed;
-    border-radius: 0.35rem 0.35rem 0 0;
+    border-radius: 1rem 1rem 0 0;
     background-color: #f5f8fa;
 }
 
@@ -530,6 +547,7 @@ del, s, strike {
 
 .Liberty .content-wrapper .liberty-content .liberty-content-header .title .namespace {
     color: #545454;
+    box-shadow: inset 0 -0.5rem 0 var(--liberty-brand-bright-color, #a0c4f8);
 }
 
 .Liberty .content-wrapper .liberty-content .liberty-content-header .header-ads {
@@ -581,7 +599,7 @@ del, s, strike {
     padding: 0;
     padding-top: 0.45rem;
     margin-left: 0.25rem;
-    border-radius: 0.35rem;
+    border-radius: 1rem;
     text-align: center;
     cursor: pointer;
     background: #ccc;
@@ -607,7 +625,7 @@ del, s, strike {
 /* 컨텐츠 하단 수정 */
 .Liberty .content-wrapper .liberty-footer {
     border: 1px solid #e1e8ed;
-    border-radius: 0 0 0.35rem 0.35rem;
+    border-radius: 0 0 1rem 1rem;
     background-color: #f5f8fa;
     padding: 1rem;
     clear: both;
@@ -629,6 +647,13 @@ del, s, strike {
     font-size: 0.95rem;
     box-shadow: 0 6px 12px rgba(0,0,0,.175);
     border-color: #e1e8ed;
+    border-radius: 1rem;
+    padding: 8px 2px;
+}
+
+.dropdown-item {
+    border-radius: 0.35rem;
+
 }
 
 .dropdown-menu .dropdown-item:hover {
@@ -654,7 +679,7 @@ del, s, strike {
 
 .btn {
     box-shadow: none;
-    border-radius: 0.35rem;
+    border-radius: 1rem;
 }
 
 .btn:active, .btn:focus {
@@ -677,7 +702,16 @@ caption {
 .float-right {
     float: right;
 }
+
+.btn-secondary {
+    border-color: transparent;
+}
+
 /* 부트스트랩 커스텀 End*/
+
+.btn.btn-secondary.tools-btn {
+    border-color: #e1e8ed;
+}
 
 div.scroll-buttons {
     position: fixed;
