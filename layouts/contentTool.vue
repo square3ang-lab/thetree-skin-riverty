@@ -200,41 +200,41 @@ export default {
                         if (this.data.starred) this.main.push({
                             to: this.doc_action_link(this.data.document, 'member/unstar'),
                             tooltip: "Unstar",
-                            html: `<span class="fa fa-star"></span> <span class="star-count">${this.data.star_count}</span>`
+                            html: `<span class="fa-solid fa-star"></span> <span class="star-count">${this.data.star_count}</span>`
                         });
                         else if (this.data.star_count >= 0) this.main.push({
                             to: this.doc_action_link(this.data.document, 'member/star'),
                             tooltip: "Star",
-                            html: `<span class="fa fa-star-o"></span> <span class="star-count">${this.data.star_count}</span>`
+                            html: `<span class="fa-regular fa-star"></span> <span class="star-count">${this.data.star_count}</span>`
                         });
                         this.main.push({
                             to: this.doc_action_link(this.data.document, 'backlink'),
-                            html: `<span class="fa fa-anchor"></span> 역링크`,
+                            html: `<span class="fa-solid fa-anchor"></span> 역링크`,
                         });
                         this.main.push({
                             to: this.doc_action_link(this.data.document, 'discuss'),
                             class: this.data.discuss_progress ? 'btn-discuss-progress' : null,
-                            html: `<span class="fa fa-comments"></span> 토론`
+                            html: `<span class="fa-solid fa-comments"></span> 토론`
                         });
                         if (this.data.editable === true && this.data.edit_acl_message) this.main.push({
                             onclick: () => this.$emit('onClickEditBtn'),
-                            html: `<span class="fa fa-pencil-square"></span> 편집 요청`
+                            html: `<span class="fa-solid fa-pencil-square"></span> 편집 요청`
                         });
                         else if (this.data.editable === false && this.data.edit_acl_message) this.main.push({
                             onclick: () => this.$emit('onClickEditBtn'),
-                            html: `<span class="fa fa-lock"></span> 편집`
+                            html: `<span class="fa-solid fa-lock"></span> 편집`
                         });
                         else this.main.push({
                             to: this.doc_action_link(this.data.document, 'edit'),
-                            html: `<span class="fa fa-edit"></span> 편집`
+                            html: `<span class="fa-solid fa-edit"></span> 편집`
                         });
                         this.main.push({
                             to: this.doc_action_link(this.data.document, 'history', this.data.rev ? { from: this.data.rev } : undefined),
-                            html: `<span class="fa fa-history"></span> 역사`
+                            html: `<span class="fa-solid fa-history"></span> 역사`
                         });
                         this.main.push({
                             to: this.doc_action_link(this.data.document, 'acl'),
-                            html: `<span class="fa fa-shield"></span> ACL`
+                            html: `<span class="fa-solid fa-shield"></span> ACL`
                         });
                         if (this.data.user) {
                             this.menu.push({
@@ -311,11 +311,11 @@ export default {
                     });
                     if (this.data.edit_acl_message) this.main.push({
                         onclick: () => this.$emit('onClickEditBtn'),
-                        html: `<span class="fa fa-lock"></span> 편집`
+                        html: `<span class="fa-solid fa-lock"></span> 편집`
                     });
                     else this.main.push({
                         to: this.doc_action_link(this.data.document, 'edit'),
-                        html: `<span class="fa fa-edit"></span> 편집`
+                        html: `<span class="fa-solid fa-edit"></span> 편집`
                     });
                     this.main.push({
                         to: this.doc_action_link(this.data.document, 'history', this.data.rev ? { from: this.data.rev } : undefined),

@@ -196,7 +196,8 @@ body {
     margin: 0;
 }
 
-.Liberty .nav-wrapper .navbar .navbar-nav .nav-item .fa {
+.Liberty .nav-wrapper .navbar .navbar-nav .nav-item .fa-solid,
+.Liberty .nav-wrapper .navbar .navbar-nav .nav-item .fa-regular {
     margin-right: 0.5rem;
     font-size: 1rem;
 }
@@ -272,7 +273,8 @@ body {
     transition: .3s;
 }
 
-.Liberty .nav-wrapper .navbar .form-inline .btn .fa {
+.Liberty .nav-wrapper .navbar .form-inline .btn .fa-solid,
+.Liberty .nav-wrapper .navbar .form-inline .btn .fa-regular {
     width: 0.9rem;
 }
 
@@ -281,14 +283,16 @@ body {
     padding-left: 0.8rem;
 }
 
-.Liberty .nav-wrapper .navbar .navbar-login .fa {
+.Liberty .nav-wrapper .navbar .navbar-login .fa-solid,
+.Liberty .nav-wrapper .navbar .navbar-login .fa-regular {
     color: #fff;
     padding: 0.7rem 0;
     font-size: 1.5rem;
     line-height: 1.4rem;
 }
 
-#login-menu>.fa {
+#login-menu>.fa-solid,
+#login-menu>.fa-regular {
     line-height: 0.6rem;
     height: 1.5rem;
     width: 1.5rem;
@@ -307,7 +311,6 @@ body {
 .Liberty .nav-wrapper .navbar .navbar-login .profile-img {
     width: 2rem;
     height: 2rem;
-    border-radius: 1rem;
     margin: 0;
     border: 1px solid #e1e8ed;
 }
@@ -318,12 +321,12 @@ body {
 }
 
 .Liberty .nav-wrapper .navbar .navbar-login .login-dropdown-menu {
-    top: 120%;
+    top: 100%;
     right: -0.5rem;
     z-index: 1002;
 }
 
-.Liberty .nav-wrapper .navbar .navbar-login .login-dropdown-menu:before,
+/*.Liberty .nav-wrapper .navbar .navbar-login .login-dropdown-menu:before,
 .Liberty .nav-wrapper .navbar .navbar-login .login-dropdown-menu:after {
     bottom: 100%;
     border: solid transparent;
@@ -345,7 +348,7 @@ body {
     border-width: 0.78rem;
     left: auto;
     right: 0.6rem;
-}
+}*/
 
 .Liberty .nav-wrapper .navbar .navbar-login .login-dropdown-menu .username {
     cursor: default;

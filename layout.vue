@@ -9,22 +9,23 @@
                     }}</nuxt-link>
                     <ul class="nav navbar-nav">
                         <li class="nav-item">
-                            <nuxt-link class="nav-link" to="/RecentChanges"><span class="fa fa-refresh"></span><span
-                                    class="hide-title">최근 변경</span></nuxt-link>
+                            <nuxt-link class="nav-link" to="/RecentChanges"><span
+                                    class="fa-solid fa-refresh"></span><span class="hide-title">최근 변경</span></nuxt-link>
                         </li>
                         <li class="nav-item">
-                            <nuxt-link class="nav-link" to="/RecentDiscuss"><span class="fa fa-comments"></span><span
-                                    class="hide-title">최근 토론</span></nuxt-link>
+                            <nuxt-link class="nav-link" to="/RecentDiscuss"><span
+                                    class="fa-solid fa-comments"></span><span class="hide-title">최근
+                                    토론</span></nuxt-link>
                         </li>
                         <li class="nav-item">
-                            <nuxt-link class="nav-link" to="/random"><span class="fa fa-random"></span><span
+                            <nuxt-link class="nav-link" to="/random"><span class="fa-solid fa-random"></span><span
                                     class="hide-title">임의 문서</span></nuxt-link>
                         </li>
                         <li class="nav-item">
                             <dropdown>
                                 <template #toggle>
                                     <a class="nav-link dropdown-toggle dropdown-toggle-fix" href="#" @click.prevent>
-                                        <span class="fa fa-gear"></span><span class="hide-title">도구</span>
+                                        <span class="fa-solid fa-gear"></span><span class="hide-title">도구</span>
                                     </a>
                                 </template>
                                 <div class="dropdown-menu" role="menu">
@@ -54,15 +55,15 @@
                                 <a id="login-menu" class="dropdown-toggle" type="button">
                                     <img v-if="$store.state.session.gravatar_url" class="profile-img"
                                         :src="$store.state.session.gravatar_url">
-                                    <span v-else class="fa fa-user-circle-o"></span>
+                                    <span v-else class="fa-solid fa-user"></span>
                                 </a>
                             </template>
                             <div class="dropdown-menu dropdown-menu-right login-dropdown-menu">
                                 <div v-if="$store.state.session.account.type === 1" class="username dropdown-item">
-                                    <b>{{ $store.state.session.account.name }}</b><br>Member
+                                    <b>{{ $store.state.session.account.name }}</b><br>사용자
                                 </div>
                                 <div v-else-if="$store.state.session.account.type === 0" class="username dropdown-item">
-                                    <b>{{ $store.state.session.account.name }}</b><br>Please login!
+                                    <b>{{ $store.state.session.account.name }}</b><br>IP 사용자
                                 </div>
                                 <div class="dropdown-divider"></div>
                                 <a href="#" class="dropdown-item" @click.prevent="openSettingModal">설정</a>
@@ -103,17 +104,19 @@
                     <search-form />
                 </nav>
             </div>
-            <div class="content-wrapper" :class="{ 'hide-sidebar': $store.state.localConfig['riverty.sidebar'] === 'hide' }">
+            <div class="content-wrapper"
+                :class="{ 'hide-sidebar': $store.state.localConfig['riverty.sidebar'] === 'hide' }">
                 <div class="liberty-sidebar">
-                    <div class="liberty-right-fixed" :class="{ 'fixed': $store.state.localConfig['riverty.sidebar'] === 'fix' }">
+                    <div class="liberty-right-fixed"
+                        :class="{ 'fixed': $store.state.localConfig['riverty.sidebar'] === 'fix' }">
                         <div class="live-recent">
                             <div class="live-recent-header">
                                 <ul class="nav nav-tabs">
                                     <li class="nav-item">
                                         <a id="liberty-recent-tab1" class="nav-link active"
-                                            style="font-size:18px;font-weight:500;letter-spacing:-1px;"><span
-                                                class="fa fa-clock-o"
-                                                style="font-size:25px;vertical-align:bottom" />&nbsp;&nbsp;&nbsp;최근
+                                            style="font-size:18px;letter-spacing:-1px;"><span
+                                                class="fa-solid fa-refresh"
+                                                style="font-size:22px;transform:translateY(1px)" />&nbsp;&nbsp;&nbsp;최근
                                             변경</a>
                                     </li>
                                 </ul>
@@ -141,7 +144,6 @@
                                                 $store.state.page.data.document.namespace }}</span>:</span>{{
                                                 $store.state.page.data.document.title
                                             }}</nuxt-link>
-                                <div style="height:0.5rem" />
                                 <small
                                     v-if="$store.state.page.viewName === 'edit_edit_request' || $store.state.page.viewName === 'edit_request'">(편집
                                     요청)</small>
@@ -184,11 +186,8 @@
                                     판)</small>
                             </h1>
                             <h1 v-else>{{ $store.state.page.title }}</h1>
-
-
-                            <span v-if="$store.state.page.data.rev">이 리버전의 수정 시각: <local-date
-                                    :date="$store.state.page.data.date" /></span>
-                            <span v-else-if="$store.state.page.data.date">최근 수정 시각: <local-date
+                            <div style="height:0.5rem" />
+                            <span v-if="$store.state.page.data.date">최근 수정 시각: <local-date
                                     :date="$store.state.page.data.date" /></span>
                         </div>
                     </div>
@@ -220,6 +219,14 @@
                         </alert>
                         <nuxt />
                         <div v-if="$store.state.page.viewName === 'license'">
+                            <p>
+                                Icons provided by <a href="https://fontawesome.com/" target="_blank"
+                                    rel="noopener noreferrer">Font
+                                    Awesome</a> are licensed under the
+                                <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank"
+                                    rel="noopener noreferrer">CC
+                                    BY 4.0 License</a>.
+                            </p>
                             <h2>Liberty skin license</h2>
                             <pre>{{ License }}</pre>
                         </div>
@@ -233,9 +240,9 @@
                                         <ul class="nav nav-tabs">
                                             <li class="nav-item">
                                                 <a id="liberty-recent-tab1" class="nav-link active"
-                                                    style="font-size:18px;font-weight:500;letter-spacing:-1px;"><span
-                                                        class="fa fa-clock-o"
-                                                        style="font-size:25px;vertical-align:bottom" />&nbsp;&nbsp;&nbsp;최근
+                                                    style="font-size:18px;letter-spacing:-1px;"><span
+                                                        class="fa-solid fa-refresh"
+                                                        style="font-size:22px;transform:translateY(1px)" />&nbsp;&nbsp;&nbsp;최근
                                                     변경</a>
                                             </li>
                                         </ul>
@@ -266,10 +273,10 @@
             </ul>
         </div>
         <div class="scroll-buttons">
-            <nuxt-link class="scroll-toc" to="#toc"><i class="fa fa-list-alt" aria-hidden="true"></i></nuxt-link>
-            <nuxt-link id="left" class="scroll-button" to="#top"><i class="fa fa-arrow-up"
+            <nuxt-link class="scroll-toc" to="#toc"><i class="fa-solid fa-list-alt" aria-hidden="true"></i></nuxt-link>
+            <nuxt-link id="left" class="scroll-button" to="#top"><i class="fa-solid fa-arrow-up"
                     aria-hidden="true"></i></nuxt-link>
-            <nuxt-link id="right" class="scroll-bottom" to="#bottom"><i class="fa fa-arrow-down"
+            <nuxt-link id="right" class="scroll-bottom" to="#bottom"><i class="fa-solid fa-arrow-down"
                     aria-hidden="true"></i></nuxt-link>
         </div>
     </div>

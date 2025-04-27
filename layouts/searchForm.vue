@@ -10,8 +10,8 @@
                 </div>
             </div>
             <span class="input-group-btn">
-              <button type="submit" name="fulltext" value="검색" class="btn btn-secondary" @click="onClickSearch"><span class="fa fa-search"></span></button>
-              <button type="submit" name="fulltext" value="보기" class="btn btn-secondary" @click="onClickMove"><span class="fa fa-arrow-right"></span></button>
+              <button type="submit" name="fulltext" value="검색" class="btn btn-secondary" @click="onClickSearch"><span class="fa-solid fa-search"></span></button>
+              <button type="submit" name="fulltext" value="보기" class="btn btn-secondary" @click="onClickMove"><span class="fa-solid fa-arrow-right"></span></button>
             </span>
         </div>
     </form>
