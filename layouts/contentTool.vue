@@ -188,11 +188,11 @@ export default {
                     if (this.data.date === null) {
                         this.main.push({
                             to: this.doc_action_link(this.data.document, 'backlink'),
-                            title: "역링크"
+                            html: `<span class="fa-solid fa-anchor"></span> 역링크`
                         });
                         this.main.push({
                             to: this.doc_action_link(this.data.document, 'acl') + '#namespace.read',
-                            title: "ACL"
+                            html: `<span class="fa-solid fa-shield"></span> ACL`
                         });
                         break;
                     }
@@ -239,7 +239,7 @@ export default {
                         if (this.data.user) {
                             this.menu.push({
                                 to: this.contribution_link(this.data.user.uuid),
-                                title: "기여 목록"
+                                html: `<span class="fa-solid fa-list"></span> 기여 목록`
                             });
                             if (this.$store.state.session.quick_block && this.$store.state.localConfig['riverty.admin_convenience'] !== false) {
                                 this.menu.push({
@@ -248,17 +248,17 @@ export default {
                                         username: this.data.document.title,
                                         note: `${this.doc_fulltitle(this.data.document)} 긴급차단`
                                     }),
-                                    title: "사용자 차단"
+                                    html: `<span class="fa-solid fa-ban"></span> 사용자 차단`
                                 });
                                 this.menu.push({
                                     class: 'admin',
                                     to: `/BlockHistory?query=${this.data.user.uuid}&target=text`,
-                                    title: "차단 내역"
+                                    html: `<span class="fa-solid fa-list"></span> 차단 내역`
                                 });
                                 this.menu.push({
                                     class: 'admin',
                                     onclick: () => this.copyUuid(this.data.document.title, this.data.user.uuid),
-                                    title: "UUID 복사"
+                                    html: `<span class="fa-solid fa-id-card"></span> UUID 복사`
                                 });
                             }
                         }
@@ -271,43 +271,43 @@ export default {
                     this.main.push({
                         to: this.doc_action_link(this.data.document, 'history', this.data.rev ? { from: this.data.rev } : undefined),
                         class: 'btn-info',
-                        title: "역사"
+                        html: `<span class="fa-solid fa-history"></span> 역사`
                     });
                     this.main.push({
                         to: this.doc_action_link(this.data.document, 'w', uuid ? { uuid } : undefined),
                         class: this.$store.state.page.viewName === 'wiki' ? 'disabled' : null,
-                        title: "보기"
+                        html: `<span class="fa-solid fa-eye"></span> 보기`
                     });
                     this.main.push({
                         to: this.doc_action_link(this.data.document, 'raw', uuid ? { uuid } : undefined),
                         class: this.$store.state.page.viewName === 'raw' ? 'disabled' : null,
-                        title: "RAW"
+                        html: `<span class="fa-regular fa-file"></span> RAW`
                     });
                     this.main.push({
                         to: this.doc_action_link(this.data.document, 'blame', uuid ? { uuid } : undefined),
                         class: this.$store.state.page.viewName === 'blame' ? 'disabled' : null,
-                        title: "blame"
+                        html: `<span class="fa-solid fa-magnifying-glass"></span> blame`
                     });
                     this.main.push({
                         to: this.doc_action_link(this.data.document, 'revert', uuid ? { uuid } : undefined),
                         class: this.$store.state.page.viewName === 'revert' ? 'disabled' : null,
-                        title: "되돌리기"
+                        html: `<span class="fa-solid fa-rotate-left"></span> 되돌리기`
                     });
                     this.main.push({
                         to: this.doc_action_link(this.data.document, 'diff', uuid ? { uuid } : undefined),
                         class: this.$store.state.page.viewName === 'diff' ? 'disabled' : null,
-                        title: "비교"
+                        html: `<span class="fa-solid fa-code-compare"></span> 비교`
                     });
                     break;
                 case 'notfound':
                     this.main.push({
                         to: this.doc_action_link(this.data.document, 'backlink'),
-                        title: "역링크"
+                        html: `<span class="fa-solid fa-anchor"></span> 역링크`,
                     });
                     this.main.push({
                         to: this.doc_action_link(this.data.document, 'discuss'),
                         class: this.data.discuss_progress ? 'btn-discuss-progress' : null,
-                        title: "토론"
+                        html: `<span class="fa-solid fa-comments"></span> 토론`
                     });
                     if (this.data.edit_acl_message) this.main.push({
                         onclick: () => this.$emit('onClickEditBtn'),
@@ -319,91 +319,91 @@ export default {
                     });
                     this.main.push({
                         to: this.doc_action_link(this.data.document, 'history', this.data.rev ? { from: this.data.rev } : undefined),
-                        title: "역사"
+                        html: `<span class="fa-solid fa-history"></span> 역사`
                     });
                     this.main.push({
                         to: this.doc_action_link(this.data.document, 'acl'),
-                        title: "ACL"
+                        html: `<span class="fa-solid fa-shield"></span> ACL`
                     });
                     break;
                 case 'edit':
                     this.main.push({
                         to: this.doc_action_link(this.data.document, 'move'),
-                        title: "이동"
+                        html: `<span class="fa-solid fa-circle-arrow-right"></span> 이동`
                     });
                     this.main.push({
                         class: "btn-danger",
                         to: this.doc_action_link(this.data.document, 'delete'),
-                        title: "삭제"
+                        html: `<span class="fa-solid fa-trash"></span> 삭제`
                     });
                     this.main.push({
                         to: this.doc_action_link(this.data.document, 'history'),
-                        title: "역사"
+                        html: `<span class="fa-solid fa-history"></span> 역사`
                     });
                     this.main.push({
                         to: this.doc_action_link(this.data.document, 'acl') + '#document.edit',
-                        title: "ACL"
+                         html: `<span class="fa-solid fa-shield"></span> ACL`
                     });
                     break;
                 case 'edit_edit_request':
                     this.main.push({
                         to: this.doc_action_link(this.data.document, 'history'),
-                        title: "역사"
+                        html: `<span class="fa-solid fa-history"></span> 역사`
                     });
                     this.main.push({
                         to: this.doc_action_link(this.data.document, 'acl') + '#document.edit_request',
-                        title: "ACL"
+                        html: `<span class="fa-solid fa-shield"></span> ACL`
                     });
                     break;
                 case 'history':
                     this.main.push({
                         to: this.doc_action_link(this.data.document, 'discuss'),
-                        title: "토론"
+                        html: `<span class="fa-solid fa-comments"></span> 토론`
                     });
                     this.main.push({
                         to: this.doc_action_link(this.data.document, 'edit'),
-                        title: "편집"
+                        html: `<span class="fa-solid fa-edit"></span> 편집`
                     });
                     this.main.push({
                         to: this.doc_action_link(this.data.document, 'acl'),
-                        title: "ACL"
+                        html: `<span class="fa-solid fa-shield"></span> ACL`
                     });
                     break;
                 case 'thread_list':
                     this.main.push({
                         to: this.doc_action_link(this.data.document, 'edit'),
-                        title: "편집"
+                        html: `<span class="fa-solid fa-edit"></span> 편집`
                     });
                     this.main.push({
                         to: this.doc_action_link(this.data.document, 'acl') + '#document.create_thread',
-                        title: "ACL"
+                        html: `<span class="fa-solid fa-shield"></span> ACL`
                     });
                     break;
                 case 'thread_list_close':
                 case 'edit_request_close':
                     this.main.push({
                         to: this.doc_action_link(this.data.document, 'discuss'),
-                        title: "토론"
+                        html: `<span class="fa-solid fa-comments"></span> 토론`
                     });
                     break;
                 case 'thread':
                     this.main.push({
                         to: this.doc_action_link(this.data.document, 'discuss'),
-                        title: "토론"
+                        html: `<span class="fa-solid fa-comments"></span> 토론`
                     });
                     this.main.push({
                         to: this.doc_action_link(this.data.document, 'acl') + '#document.write_thread_comment',
-                        title: "ACL"
+                        html: `<span class="fa-solid fa-shield"></span> ACL`
                     });
                     break;
                 case 'edit_request':
                     this.main.push({
                         to: this.doc_action_link(this.data.document, 'discuss'),
-                        title: "토론"
+                        html: `<span class="fa-solid fa-comments"></span> 토론`
                     });
                     this.main.push({
                         to: this.doc_action_link(this.data.document, 'acl') + '#document.edit',
-                        title: "ACL"
+                        html: `<span class="fa-solid fa-shield"></span> ACL`
                     });
                     break;
                 case 'contribution':
@@ -422,22 +422,22 @@ export default {
                                 ip: this.data.account.type === 0 ? this.data.account.name + '/' + (this.data.account.name.indexOf('.') === -1 ? "128" : '32') : undefined,
                                 note: '기여 목록 긴급차단'
                             }),
-                            title: "사용자 차단"
+                            html: `<span class="fa-solid fa-ban"></span> 사용자 차단`
                         });
                         if (this.data.account.type === -1 && this.data.account.uuid) this.menu.push({
                             to: this.doc_action_link(this.user_doc('*' + this.data.account.uuid), 'w'),
                             class: 'admin',
-                            title: "삭제된 사용자 문서"
+                            html: `<span class="fa-solid fa-file"> 삭제된 사용자 문서`
                         });
                         this.menu.push({
                             class: 'admin',
                             to: `/BlockHistory?query=${this.data.account.uuid}&target=text`,
-                            title: "차단 내역"
+                            html: `<span class="fa-solid fa-list"></span> 차단 내역`
                         });
                         this.menu.push({
                             class: 'admin',
                             onclick: () => this.copyUuid(this.data.account.name, this.data.account.uuid),
-                            title: "UUID 복사"
+                            html: `<span class="fa-solid fa-id-card"></span> UUID 복사`
                         });
                     }
                     break;
