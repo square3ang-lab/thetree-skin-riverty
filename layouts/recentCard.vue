@@ -34,7 +34,7 @@
 }
 
 :global(.theseed-dark-mode) .live-recent-content {
-    border-color: #777;
+    border-color: #444;
 }
 
 .live-recent-content .live-recent-list {
@@ -49,7 +49,7 @@
 }
 
 :global(.theseed-dark-mode) .live-recent-content .live-recent-list li {
-    border-color: #777;
+    border-color: #444;
 }
 
 .live-recent-content .live-recent-list li:last-child {

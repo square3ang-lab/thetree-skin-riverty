@@ -104,8 +104,8 @@
     }
 
     .Liberty .content-wrapper .liberty-content .liberty-content-header,
-    .Liberty .content-wrapper .liberty-content .liberty-content-main,
-    .Liberty .content-wrapper .liberty-footer {
+    .Liberty .content-wrapper .liberty-content .liberty-content-main
+    {
         border-left: none;
         border-right: none;
     }
@@ -115,10 +115,6 @@
         background-color: #fff;
         border-left: 1px solid #e1e8ed;
         border-right: 1px solid #e1e8ed;
-    }
-
-    .Liberty .content-wrapper .liberty-footer {
-        padding: 0.5rem;
     }
 }
 

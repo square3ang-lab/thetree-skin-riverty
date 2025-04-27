@@ -22,7 +22,7 @@ body.theseed-dark-mode {
 	color: #ddd;
 }
 
-.theseed-dark-mode .Liberty .content-wrapper .liberty-footer {
+.theseed-dark-mode .Liberty .liberty-footer {
 	background-color: #1c1d1f;
 	color: #ddd;
 }
@@ -37,21 +37,21 @@ body.theseed-dark-mode {
 
 .theseed-dark-mode .Liberty .content-wrapper .liberty-content .liberty-content-header,
 .theseed-dark-mode .Liberty .content-wrapper .liberty-content .liberty-content-main,
-.theseed-dark-mode .Liberty .content-wrapper .liberty-footer {
-	border-color: #777;
+.theseed-dark-mode .Liberty .liberty-footer {
+	border-color: #444;
 }
 
 .theseed-dark-mode .Liberty .content-wrapper .liberty-sidebar .liberty-right-fixed .live-recent .live-recent-header .nav .nav-item,
 .theseed-dark-mode .Liberty .content-wrapper .liberty-sidebar .liberty-right-fixed .live-recent .live-recent-content .live-recent-list li,
 .theseed-dark-mode .Liberty .content-wrapper .liberty-sidebar .liberty-right-fixed .live-recent .live-recent-footer,
 .theseed-dark-mode .Liberty .content-wrapper .liberty-sidebar .liberty-right-fixed .live-recent .live-recent-content {
-	border-color: #777;
+	border-color: #444;
 }
 
 .theseed-dark-mode .btn.btn-secondary.tools-btn {
 	background: #1c1d1f;
 	color: #ddd;
-	border-color: #777;
+	border-color: #444;
 }
 
 .theseed-dark-mode button.btn.btn-secondary.tools-btn.dropdown-toggle {
@@ -87,8 +87,8 @@ body.theseed-dark-mode {
 }
 
 .theseed-dark-mode .dropdown-divider {
-	border-color: #777;
-	background-color: #777;
+	border-color: #444;
+	background-color: #444;
 }
 
 .theseed-dark-mode .Liberty .content-wrapper .liberty-sidebar .liberty-right-fixed .live-recent .live-recent-header .nav .nav-item .nav-link.active,
@@ -125,7 +125,7 @@ body.theseed-dark-mode {
 
 .theseed-dark-mode .dropdown-menu {
 	background-color: #16171A;
-	border-color: #777;
+	border-color: #444;
 }
 
 .theseed-dark-mode a {

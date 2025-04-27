@@ -623,15 +623,18 @@ del, s, strike {
 /* 컨텐츠 수정 End */
 
 /* 컨텐츠 하단 수정 */
-.Liberty .content-wrapper .liberty-footer {
-    border: 1px solid #e1e8ed;
-    border-radius: 0 0 1rem 1rem;
+.Liberty .liberty-footer {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    /*border: 1px solid #e1e8ed;*/
+    /*border-radius: 0 0 1rem 1rem;*/
     background-color: #f5f8fa;
     padding: 1rem;
     clear: both;
 }
 
-.Liberty .content-wrapper .liberty-footer ul {
+.Liberty .liberty-footer ul {
     list-style-type: none;
     list-style-image: none;
     display: inline-block;

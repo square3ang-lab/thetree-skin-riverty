@@ -5,7 +5,7 @@
             :class="{ 'navbar-fixed-top': $store.state.localConfig['liberty.fixed_navbar'] === true }">
             <nav class="navbar navbar-dark">
                 <nuxt-link class="navbar-brand" to="/">{{ $store.state.config['skin.riverty.navbar_logo_text']
-                    }}</nuxt-link>
+                }}</nuxt-link>
                 <ul class="nav navbar-nav">
                     <li class="nav-item">
                         <nuxt-link class="nav-link" to="/RecentChanges"><span class="fa fa-refresh"></span><span
@@ -131,6 +131,7 @@
                 </div>
                 <div class="liberty-content-header">
                     <content-tool @onClickEditBtn="showEditMessage" />
+
                     <div class="title">
                         <h1 v-if="$store.state.page.data.document && $store.state.page.viewName !== 'error'">
                             <nuxt-link :to="doc_action_link($store.state.page.data.document, 'w')"><span
@@ -178,6 +179,10 @@
                                 판)</small>
                         </h1>
                         <h1 v-else>{{ $store.state.page.title }}</h1>
+
+                        <span v-if="$store.state.page.data.rev">이 리버전의 수정 시각: <local-date
+                                :date="$store.state.page.data.date" /></span>
+                        <span v-else>최근 수정 시각: <local-date :date="$store.state.page.data.date" /></span>
                     </div>
                 </div>
                 <div class="liberty-content-main wiki-article">
@@ -212,24 +217,6 @@
                     </div>
                     <div class="clearfix"></div>
                 </div>
-                <div id="bottom" class="liberty-footer">
-                    <ul v-if="$store.state.page.viewName === 'wiki' && $store.state.page.data.date" class="footer-info">
-                        <li v-if="$store.state.page.data.rev" class="footer-info-lastmod">이 리비전은 <local-date
-                                :date="$store.state.page.data.date" />에 편집되었습니다.</li>
-                        <li v-else class="footer-info-lastmod">이 문서는 <local-date :date="$store.state.page.data.date" />에
-                            마지막으로
-                            편집되었습니다.</li>
-                        <li class="footer-info-copyright" v-html="$store.state.config['wiki.copyright_text']" />
-                    </ul>
-                    <ul class="footer-places" @click="onDynamicContentClick($event)"
-                        v-html="$store.state.config['skin.riverty.footer_html']" />
-                    <ul class="footer-icons">
-                        <li class="footer-poweredbyico">
-                            <a href="//github.com/wjdgustn/thetree-skin-liberty" target="_blank">Riverty</a> | <a
-                                href="//github.com/wjdgustn/thetree" target="_blank">the tree</a>
-                        </li>
-                    </ul>
-                </div>
                 <div v-if="$store.state.localConfig['liberty.sidebar'] === 'footer'"
                     style="display:flex;justify-content:center;margin-top:1rem;">
                     <div class="liberty-sidebar footer-sidebar" style="float:0;position:relative;display:block;">
@@ -256,6 +243,19 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div id="bottom" class="liberty-footer">
+            <ul v-if="$store.state.page.viewName === 'wiki' && $store.state.page.data.date" class="footer-info">
+                <li class="footer-info-copyright" v-html="$store.state.config['wiki.copyright_text']" />
+            </ul>
+            <ul class="footer-places" @click="onDynamicContentClick($event)"
+                v-html="$store.state.config['skin.riverty.footer_html']" />
+            <ul class="footer-icons">
+                <li class="footer-poweredbyico">
+                    Designed by <a href="//github.com/wjdgustn/thetree-skin-liberty" target="_blank">Riverty</a>,
+                    Powered By <a href="//github.com/wjdgustn/thetree" target="_blank">the tree</a>
+                </li>
+            </ul>
         </div>
         <div class="scroll-buttons">
             <nuxt-link class="scroll-toc" to="#toc"><i class="fa fa-list-alt" aria-hidden="true"></i></nuxt-link>
