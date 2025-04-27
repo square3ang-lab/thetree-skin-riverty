@@ -6,7 +6,7 @@
                 :class="{ 'navbar-fixed-top': $store.state.localConfig['riverty.fixed_navbar'] === true }">
                 <nav class="navbar navbar-dark">
                     <nuxt-link class="navbar-brand" to="/">{{ $store.state.config['skin.riverty.navbar_logo_text']
-                    }}</nuxt-link>
+                        }}</nuxt-link>
                     <ul class="nav navbar-nav">
                         <li class="nav-item">
                             <nuxt-link class="nav-link" to="/RecentChanges"><span
@@ -259,8 +259,8 @@
                 v-html="$store.state.config['skin.riverty.footer_html']" />
             <ul class="footer-icons">
                 <li class="footer-poweredbyico">
-                    Designed by <a href="//github.com/wjdgustn/thetree-skin-liberty" target="_blank">Riverty</a>,
-                    Powered By <a href="//github.com/wjdgustn/thetree" target="_blank">the tree</a>
+                    Powered By <a href="//github.com/wjdgustn/thetree" target="_blank">the tree</a>,
+                    Designed by <a href="//github.com/square3ang-lab/thetree-skin-riverty" target="_blank">Riverty</a>
                 </li>
             </ul>
         </div>
