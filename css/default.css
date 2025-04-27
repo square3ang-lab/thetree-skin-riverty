@@ -15,12 +15,24 @@ body {
     font-size: 0.95rem;
 }
 
-body, h1, h2, h3, h4, h5, h6 {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: "Noto Sans Korean", "Noto Sans", "Nanum Gothic", "KoPubDotum M", "Malgun Gothic", "맑은 고딕", sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6, b {
-    font-family:  "Noto Sans Korean", "Noto Sans", "Nanum Gothic", "KoPubDotum B","Malgun Gothic", "맑은 고딕", sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+b {
+    font-family: "Noto Sans Korean", "Noto Sans", "Nanum Gothic", "KoPubDotum B", "Malgun Gothic", "맑은 고딕", sans-serif;
 }
 
 input[type=password] {
@@ -72,11 +84,13 @@ img {
     margin: 0;
 }
 
-th[rowspan], td[rowspan] {
+th[rowspan],
+td[rowspan] {
     position: relative;
 }
 
-th[rowspan]:after, td[rowspan]:after {
+th[rowspan]:after,
+td[rowspan]:after {
     content: '';
     position: absolute;
     top: 0;
@@ -87,7 +101,8 @@ th[rowspan]:after, td[rowspan]:after {
 }
 
 input[type=search] {
-    -webkit-appearance: none; /* iOS 잡다한 css설정 제거 */
+    -webkit-appearance: none;
+    /* iOS 잡다한 css설정 제거 */
 }
 
 textarea {
@@ -104,22 +119,43 @@ label {
     word-break: keep-all;
 }
 
-del, s, strike {
+del,
+s,
+strike {
     color: gray;
 }
+
+.Liberty {
+    min-height: 100vh;
+    margin: 0;
+}
+
+
+/* The article fills all the space between header & footer */
+
+.Liberty {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 /* 태그 수정 End */
 
 /* 백그라운드 색 지정 */
-.Liberty, body {
+.Liberty,
+body {
     background-color: #f5f5f5;
 }
+
 /* 백그라운드 색 지정 End*/
 
 /* 컨텐츠 넓이 수정 및 가운대 정렬 */
-.Liberty .nav-wrapper .navbar, .Liberty .content-wrapper {
+.Liberty .nav-wrapper .navbar,
+.Liberty .content-wrapper {
     max-width: 1200px;
     margin: 0 auto;
 }
+
 /* 컨텐츠 넓이 수정 및 가운대 정렬 End */
 
 /* 네비 수정 */
@@ -128,7 +164,7 @@ del, s, strike {
     background-color: var(--liberty-brand-color, #4188f1);
     position: absolute;
     z-index: 100;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
     font-weight: bold;
     left: 0;
     right: 0;
@@ -173,7 +209,7 @@ del, s, strike {
 }
 
 .Liberty .nav-wrapper .navbar .navbar-nav .nav-item .nav-link:hover {
-	background-color: var(--liberty-brand-dark-color, #214479);
+    background-color: var(--liberty-brand-dark-color, #214479);
 }
 
 .Liberty .nav-wrapper .navbar .navbar-nav .nav-item .nav-link:hover,
@@ -228,7 +264,8 @@ del, s, strike {
     padding: 0.2rem 0.4rem;
 }
 
-.Liberty .nav-wrapper .navbar .form-inline .btn:hover, .Liberty .nav-wrapper .navbar .form-inline .btn:focus {
+.Liberty .nav-wrapper .navbar .form-inline .btn:hover,
+.Liberty .nav-wrapper .navbar .form-inline .btn:focus {
     background-color: var(--liberty-brand-color, #4188f1);
     color: #fff;
     outline: 0;
@@ -286,7 +323,8 @@ del, s, strike {
     z-index: 1002;
 }
 
-.Liberty .nav-wrapper .navbar .navbar-login .login-dropdown-menu:before, .Liberty .nav-wrapper .navbar .navbar-login .login-dropdown-menu:after {
+.Liberty .nav-wrapper .navbar .navbar-login .login-dropdown-menu:before,
+.Liberty .nav-wrapper .navbar .navbar-login .login-dropdown-menu:after {
     bottom: 100%;
     border: solid transparent;
     content: " ";
@@ -322,6 +360,7 @@ del, s, strike {
     background-color: transparent;
     color: #373a3c;
 }
+
 /* 네비 수정 End */
 
 /* 오른쪽 메뉴 수정 */
@@ -344,7 +383,7 @@ del, s, strike {
     width: 100% !important;
 }
 
-.Liberty .footer-sidebar .liberty-right-fixed .live-recent .live-recent-header .nav .nav-item .nav-link.active::before{
+.Liberty .footer-sidebar .liberty-right-fixed .live-recent .live-recent-header .nav .nav-item .nav-link.active::before {
     width: 100% !important;
 }
 
@@ -459,7 +498,7 @@ del, s, strike {
 }
 
 .Liberty .content-wrapper .liberty-sidebar .liberty-right-fixed .live-recent .live-recent-footer .label:hover {
-	background-color: var(--liberty-brand-dark-color, #214479);
+    background-color: var(--liberty-brand-dark-color, #214479);
 }
 
 .Liberty .content-wrapper .liberty-sidebar .right-ads {
@@ -467,6 +506,7 @@ del, s, strike {
     top: 25.73rem;
     width: 15rem;
 }
+
 /* 오른쪽 메뉴 수정 End */
 
 /* 컨텐츠 수정 */
@@ -623,12 +663,11 @@ del, s, strike {
     background-color: #eb5e4c;
     display: none;
 }
+
 /* 컨텐츠 수정 End */
 
 /* 컨텐츠 하단 수정 */
 .Liberty .liberty-footer {
-    bottom: 0;
-
     width: 100%;
     /*border: 1px solid #e1e8ed;*/
     /*border-radius: 0 0 1rem 1rem;*/
@@ -652,7 +691,7 @@ del, s, strike {
 /* 부트스트랩 커스텀 */
 .dropdown-menu {
     font-size: 0.95rem;
-    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
     border-color: #e1e8ed;
     border-radius: 1rem;
     padding: 8px 2px;
@@ -680,7 +719,7 @@ del, s, strike {
 .form-control:focus {
     border-color: #66afe9;
     outline: 0;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
     transition: 0.3s;
 }
 
@@ -689,15 +728,19 @@ del, s, strike {
     border-radius: 1rem;
 }
 
-.btn:active, .btn:focus {
+.btn:active,
+.btn:focus {
     outline: 0;
 }
 
-.input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-group {
-    z-index: 3; /* 파폭, IE 테두리관련 버그 */
+.input-group-btn:last-child>.btn,
+.input-group-btn:last-child>.btn-group {
+    z-index: 3;
+    /* 파폭, IE 테두리관련 버그 */
 }
 
-.close:focus, .close:hover {
+.close:focus,
+.close:hover {
     transition: 0.3s;
 }
 
@@ -742,10 +785,11 @@ div.scroll-buttons a {
     border-left: 0;
     text-decoration: none;
     text-align: center;
-    background: rgba(26,26,26,0.9);
+    background: rgba(26, 26, 26, 0.9);
     border-bottom: 0;
 }
 
-.scroll-buttons a:link, .scroll-buttons a:visited {
+.scroll-buttons a:link,
+.scroll-buttons a:visited {
     color: white;
 }
