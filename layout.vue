@@ -219,14 +219,6 @@
                         </alert>
                         <nuxt />
                         <div v-if="$store.state.page.viewName === 'license'">
-                            <p>
-                                Icons provided by <a href="https://fontawesome.com/" target="_blank"
-                                    rel="noopener noreferrer">Font
-                                    Awesome</a> are licensed under the
-                                <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank"
-                                    rel="noopener noreferrer">CC
-                                    BY 4.0 License</a>.
-                            </p>
                             <h2>Liberty skin license</h2>
                             <pre>{{ License }}</pre>
                         </div>
