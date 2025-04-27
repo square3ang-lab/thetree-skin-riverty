@@ -33,7 +33,7 @@ export default {
     },
     computed: {
         sidebar() {
-            return isMobile ? "bottom" : "right";
+            return isMobile ? "footer" : "right";
         }
     }
 }
