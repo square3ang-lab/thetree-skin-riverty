@@ -104,10 +104,10 @@
                 </nav>
             </div>
             <div class="content-wrapper"
-                :class="{ 'hide-sidebar': $store.state.localConfig['riverty.sidebar'] === 'hide' || $store.state.localConfig['riverty.sidebar'] === 'footer' }">
+                :class="{ 'hide-sidebar': sidebar === 'hide' || sidebar === 'footer' }">
                 <div class="liberty-sidebar">
                     <div class="liberty-right-fixed"
-                        :class="{ 'fixed': $store.state.localConfig['riverty.sidebar'] === 'fix' }">
+                        :class="{ 'fixed': sidebar === 'fix' }">
                         <div class="live-recent">
                             <div class="live-recent-header">
                                 <ul class="nav nav-tabs">
@@ -227,7 +227,7 @@
                         </div>
                         <div class="clearfix"></div>
                     </div>
-                    <div v-if="$store.state.localConfig['riverty.sidebar'] === 'footer'"
+                    <div v-if="sidebar === 'footer'"
                         style="display:flex;justify-content:center;margin-top:1rem;">
                         <div class="liberty-sidebar footer-sidebar" style="float:0;position:relative;display:block;">
                             <div class="liberty-right-fixed" style="position:relative;">
@@ -299,6 +299,8 @@ import Dropdown from './components/dropdown';
 import SettingModal from './components/settingModal';
 import License from "raw-loader!./LICENSE";
 
+import { isMobile } from '~/utils';
+
 export default {
     mixins: [Common],
     components: {
@@ -331,6 +333,7 @@ export default {
             return this.selectByTheme(this.$store.state.config['skin.riverty.brand_color_1'] ?? '#4188f1', '#2d2f34');
         },
         skinConfig() {
+
             return {
                 '--liberty-brand-color': this.brand_color,
                 '--liberty-brand-dark-color': this.selectByTheme(this.$store.state.config['skin.riverty.brand_dark_color_1'] ?? this.darkenColor(this.brand_color), '#16171a'),
@@ -348,6 +351,17 @@ export default {
                 '--text-color': this.selectByTheme('#373a3c', '#ddd'),
                 '--article-background-color': this.selectByTheme('#fff', '#1c1d1f'),
             };
+        },
+        sidebar() {
+            var sidebar = this.$store.state.localConfig["riverty.sidebar"];
+            if (sidebar != "default" && sidebar != "fix" && sidebar != "hide") {
+                this.$store.commit('localConfigSetValue', { key: 'riverty.sidebar', value: "default" });
+                sidebar = "default";
+            }
+            if (sidebar == "default") {
+                sidebar = isMobile ? "footer" : "right";
+            }
+            return sidebar;
         },
         requestable() {
             return this.$store.state.page.data.editable === true && this.$store.state.page.data.edit_acl_message && this.$store.state.page.viewName !== 'notfound';

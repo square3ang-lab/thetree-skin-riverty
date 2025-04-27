@@ -1,10 +1,9 @@
 <template>
     <setting>
         <setting-item-select label="사이드바 설정" ckey="riverty.sidebar" :default="sidebar">
+            <option value="default">기본</option>
             <option value="fix">고정</option>
             <option value="hide">숨김</option>
-            <option value="right">우측 표시</option>
-            <option value="footer">하단 표시</option>
         </setting-item-select>
         <setting-item-checkbox label="내비게이션 바 고정" ckey="riverty.fixed_navbar" />
         <setting-item-checkbox label="페이지 이동 시 검색 창 초기화" ckey="riverty.reset_search_on_move" :default="true" />
@@ -22,8 +21,6 @@ import Setting from '~/components/setting';
 import SettingItemCheckbox from '~/components/settingItemCheckbox';
 import SettingItemSelect from '~/components/settingItemSelect';
 
-import { isMobile } from '~/utils';
-
 export default {
     mixins: [Common],
     components: {
@@ -33,7 +30,7 @@ export default {
     },
     computed: {
         sidebar() {
-            return isMobile ? "footer" : "right";
+            return "default";
         }
     }
 }
