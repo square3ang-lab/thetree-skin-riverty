@@ -15,7 +15,7 @@
                     <div class="dropdown-menu dropdown-menu-right" role="menu">
                         <template v-for="m in menu" :key="m.to">
                             <a v-if="m.onclick" @click.prevent="m.onclick" href="#" class="dropdown-item"
-                                :class="m.class">{{ m.title }}</a>
+                                :class="m.class" v-text="m.title" v-html="m.html"></a>
                             <nuxt-link v-else :to="m.to" class="dropdown-item" :class="m.class" v-text="m.title"
                                 v-html="m.html"></nuxt-link>
                         </template>

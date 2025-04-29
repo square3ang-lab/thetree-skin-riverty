@@ -242,8 +242,8 @@ body {
     /*border-color: #e1e8ed;*/
     border: 0;
     border-radius: 0;
-    border-top-left-radius: 1rem;
-    border-bottom-left-radius: 1rem;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
     float: none;
 }
 
