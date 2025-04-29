@@ -16,8 +16,8 @@
                         <template v-for="m in menu" :key="m.to">
                             <a v-if="m.onclick" @click.prevent="m.onclick" href="#" class="dropdown-item"
                                 :class="m.class">{{ m.title }}</a>
-                            <nuxt-link v-else :to="m.to" class="dropdown-item" :class="m.class">{{ m.title
-                                }}</nuxt-link>
+                            <nuxt-link v-else :to="m.to" class="dropdown-item" :class="m.class" v-text="m.title"
+                                v-html="m.html"></nuxt-link>
                         </template>
                     </div>
                 </dropdown>
@@ -35,17 +35,15 @@
 
 .content-tools .tools-btn {
     font-size: 0.9rem;
-    padding: 0.6rem 0.5rem;
+    padding: 0.6rem 0.7rem;
 }
 
-.content-tools .tools-btn:deep().fa-star,
-.content-tools .tools-btn:deep().fa-star-o {
-    color: #ff6200;
+.content-tools .tools-btn:deep().fa-star {
     margin-right: 0.1em;
 }
 
 .content-tools .dropdown.btn.tools-btn {
-    padding: 0;
+    padding: 0.2rem 0.2rem;
 }
 
 .content-tools .dropdown-toggle {
@@ -207,14 +205,9 @@ export default {
                             tooltip: "Star",
                             html: `<span class="fa-regular fa-star"></span> <span class="star-count">${this.data.star_count}</span>`
                         });
-                        this.main.push({
+                        this.menu.push({
                             to: this.doc_action_link(this.data.document, 'backlink'),
                             html: `<span class="fa-solid fa-anchor"></span> 역링크`,
-                        });
-                        this.main.push({
-                            to: this.doc_action_link(this.data.document, 'discuss'),
-                            class: this.data.discuss_progress ? 'btn-discuss-progress' : null,
-                            html: `<span class="fa-solid fa-comments"></span> 토론`
                         });
                         if (this.data.editable === true && this.data.edit_acl_message) this.main.push({
                             onclick: () => this.$emit('onClickEditBtn'),
@@ -229,10 +222,15 @@ export default {
                             html: `<span class="fa-solid fa-edit"></span> 편집`
                         });
                         this.main.push({
+                            to: this.doc_action_link(this.data.document, 'discuss'),
+                            class: this.data.discuss_progress ? 'btn-discuss-progress' : null,
+                            html: `<span class="fa-solid fa-comments"></span> 토론`
+                        });
+                        this.main.push({
                             to: this.doc_action_link(this.data.document, 'history', this.data.rev ? { from: this.data.rev } : undefined),
                             html: `<span class="fa-solid fa-history"></span> 역사`
                         });
-                        this.main.push({
+                        this.menu.push({
                             to: this.doc_action_link(this.data.document, 'acl'),
                             html: `<span class="fa-solid fa-shield"></span> ACL`
                         });
@@ -268,35 +266,44 @@ export default {
                 case 'blame':
                 case 'revert':
                 case 'diff':
+                    if (this.data.starred) this.main.push({
+                        to: this.doc_action_link(this.data.document, 'member/unstar'),
+                        tooltip: "Unstar",
+                        html: `<span class="fa-solid fa-star"></span> <span class="star-count">${this.data.star_count}</span>`
+                    });
+                    else if (this.data.star_count >= 0) this.main.push({
+                        to: this.doc_action_link(this.data.document, 'member/star'),
+                        tooltip: "Star",
+                        html: `<span class="fa-regular fa-star"></span> <span class="star-count">${this.data.star_count}</span>`
+                    });
+                    this.menu.push({
+                        to: this.doc_action_link(this.data.document, 'backlink'),
+                        html: `<span class="fa-solid fa-anchor"></span> 역링크`,
+                    });
+                    if (this.data.editable === true && this.data.edit_acl_message) this.main.push({
+                        onclick: () => this.$emit('onClickEditBtn'),
+                        html: `<span class="fa-solid fa-pencil-square"></span> 편집 요청`
+                    });
+                    else if (this.data.editable === false && this.data.edit_acl_message) this.main.push({
+                        onclick: () => this.$emit('onClickEditBtn'),
+                        html: `<span class="fa-solid fa-lock"></span> 편집`
+                    });
+                    else this.main.push({
+                        to: this.doc_action_link(this.data.document, 'edit'),
+                        html: `<span class="fa-solid fa-edit"></span> 편집`
+                    });
+                    this.main.push({
+                        to: this.doc_action_link(this.data.document, 'discuss'),
+                        class: this.data.discuss_progress ? 'btn-discuss-progress' : null,
+                        html: `<span class="fa-solid fa-comments"></span> 토론`
+                    });
                     this.main.push({
                         to: this.doc_action_link(this.data.document, 'history', this.data.rev ? { from: this.data.rev } : undefined),
-                        class: 'btn-info',
                         html: `<span class="fa-solid fa-history"></span> 역사`
                     });
-                    this.main.push({
-                        to: this.doc_action_link(this.data.document, 'w', uuid ? { uuid } : undefined),
-                        class: this.$store.state.page.viewName === 'wiki' ? 'disabled' : null,
-                        html: `<span class="fa-solid fa-eye"></span> 보기`
-                    });
-                    this.main.push({
-                        to: this.doc_action_link(this.data.document, 'raw', uuid ? { uuid } : undefined),
-                        class: this.$store.state.page.viewName === 'raw' ? 'disabled' : null,
-                        html: `<span class="fa-regular fa-file"></span> RAW`
-                    });
-                    this.main.push({
-                        to: this.doc_action_link(this.data.document, 'blame', uuid ? { uuid } : undefined),
-                        class: this.$store.state.page.viewName === 'blame' ? 'disabled' : null,
-                        html: `<span class="fa-solid fa-magnifying-glass"></span> blame`
-                    });
-                    this.main.push({
-                        to: this.doc_action_link(this.data.document, 'revert', uuid ? { uuid } : undefined),
-                        class: this.$store.state.page.viewName === 'revert' ? 'disabled' : null,
-                        html: `<span class="fa-solid fa-rotate-left"></span> 되돌리기`
-                    });
-                    this.main.push({
-                        to: this.doc_action_link(this.data.document, 'diff', uuid ? { uuid } : undefined),
-                        class: this.$store.state.page.viewName === 'diff' ? 'disabled' : null,
-                        html: `<span class="fa-solid fa-code-compare"></span> 비교`
+                    this.menu.push({
+                        to: this.doc_action_link(this.data.document, 'acl'),
+                        html: `<span class="fa-solid fa-shield"></span> ACL`
                     });
                     break;
                 case 'notfound':
@@ -326,7 +333,15 @@ export default {
                         html: `<span class="fa-solid fa-shield"></span> ACL`
                     });
                     break;
+
+                case 'edit_request':
+                    if (!this.$route.path.startsWith("/new_edit_request")) break;
                 case 'edit':
+                case 'edit_edit_request':
+                    this.main.push({
+                        to: this.doc_action_link(this.data.document, 'backlink'),
+                        html: `<span class="fa-solid fa-anchor"></span> 역링크`,
+                    });
                     this.main.push({
                         to: this.doc_action_link(this.data.document, 'move'),
                         html: `<span class="fa-solid fa-circle-arrow-right"></span> 이동`
@@ -336,74 +351,34 @@ export default {
                         to: this.doc_action_link(this.data.document, 'delete'),
                         html: `<span class="fa-solid fa-trash"></span> 삭제`
                     });
-                    this.main.push({
-                        to: this.doc_action_link(this.data.document, 'history'),
-                        html: `<span class="fa-solid fa-history"></span> 역사`
-                    });
-                    this.main.push({
-                        to: this.doc_action_link(this.data.document, 'acl') + '#document.edit',
-                         html: `<span class="fa-solid fa-shield"></span> ACL`
-                    });
-                    break;
-                case 'edit_edit_request':
-                    this.main.push({
-                        to: this.doc_action_link(this.data.document, 'history'),
-                        html: `<span class="fa-solid fa-history"></span> 역사`
-                    });
-                    this.main.push({
-                        to: this.doc_action_link(this.data.document, 'acl') + '#document.edit_request',
-                        html: `<span class="fa-solid fa-shield"></span> ACL`
-                    });
                     break;
                 case 'history':
-                    this.main.push({
+                    /*this.main.push({
                         to: this.doc_action_link(this.data.document, 'discuss'),
                         html: `<span class="fa-solid fa-comments"></span> 토론`
-                    });
+                    });*/
                     this.main.push({
                         to: this.doc_action_link(this.data.document, 'edit'),
                         html: `<span class="fa-solid fa-edit"></span> 편집`
                     });
                     this.main.push({
-                        to: this.doc_action_link(this.data.document, 'acl'),
-                        html: `<span class="fa-solid fa-shield"></span> ACL`
+                        to: this.doc_action_link(this.data.document, 'backlink'),
+                        html: `<span class="fa-solid fa-anchor"></span> 역링크`
                     });
                     break;
                 case 'thread_list':
                     this.main.push({
-                        to: this.doc_action_link(this.data.document, 'edit'),
-                        html: `<span class="fa-solid fa-edit"></span> 편집`
-                    });
-                    this.main.push({
-                        to: this.doc_action_link(this.data.document, 'acl') + '#document.create_thread',
-                        html: `<span class="fa-solid fa-shield"></span> ACL`
+                        to: this.doc_action_link(this.data.document, 'w'),
+                        html: `<span class="fa-solid fa-left-long"></span> 문서로`
                     });
                     break;
                 case 'thread_list_close':
                 case 'edit_request_close':
-                    this.main.push({
-                        to: this.doc_action_link(this.data.document, 'discuss'),
-                        html: `<span class="fa-solid fa-comments"></span> 토론`
-                    });
                     break;
                 case 'thread':
                     this.main.push({
-                        to: this.doc_action_link(this.data.document, 'discuss'),
-                        html: `<span class="fa-solid fa-comments"></span> 토론`
-                    });
-                    this.main.push({
-                        to: this.doc_action_link(this.data.document, 'acl') + '#document.write_thread_comment',
-                        html: `<span class="fa-solid fa-shield"></span> ACL`
-                    });
-                    break;
-                case 'edit_request':
-                    this.main.push({
-                        to: this.doc_action_link(this.data.document, 'discuss'),
-                        html: `<span class="fa-solid fa-comments"></span> 토론`
-                    });
-                    this.main.push({
-                        to: this.doc_action_link(this.data.document, 'acl') + '#document.edit',
-                        html: `<span class="fa-solid fa-shield"></span> ACL`
+                        to: this.doc_action_link(this.data.document, 'w'),
+                        html: `<span class="fa-solid fa-left-long"></span> 문서로`
                     });
                     break;
                 case 'contribution':
@@ -412,7 +387,7 @@ export default {
                     this.main.push({
                         to: this.data.account.type === 1 ? this.doc_action_link(this.user_doc(this.data.account.name), 'w') : '',
                         class: this.data.account.type === 1 ? '' : 'disabled',
-                        title: "사용자 문서"
+                        html: `<span class="fa-solid fa-user"></span> 사용자 문서`
                     });
                     if (this.$store.state.session.quick_block && this.$store.state.localConfig['riverty.admin_convenience'] !== false) {
                         if (this.data.account.type !== -1) this.menu.push({
