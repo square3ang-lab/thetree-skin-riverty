@@ -307,16 +307,15 @@ export default {
                     });
                     break;
                 case 'notfound':
-                    this.main.push({
+                    this.menu.push({
                         to: this.doc_action_link(this.data.document, 'backlink'),
                         html: `<span class="fa-solid fa-anchor"></span> 역링크`,
                     });
-                    this.main.push({
-                        to: this.doc_action_link(this.data.document, 'discuss'),
-                        class: this.data.discuss_progress ? 'btn-discuss-progress' : null,
-                        html: `<span class="fa-solid fa-comments"></span> 토론`
+                    if (this.data.editable === true && this.data.edit_acl_message) this.main.push({
+                        onclick: () => this.$emit('onClickEditBtn'),
+                        html: `<span class="fa-solid fa-pencil-square"></span> 편집 요청`
                     });
-                    if (this.data.edit_acl_message) this.main.push({
+                    else if (this.data.editable === false && this.data.edit_acl_message) this.main.push({
                         onclick: () => this.$emit('onClickEditBtn'),
                         html: `<span class="fa-solid fa-lock"></span> 편집`
                     });
@@ -325,10 +324,15 @@ export default {
                         html: `<span class="fa-solid fa-edit"></span> 편집`
                     });
                     this.main.push({
+                        to: this.doc_action_link(this.data.document, 'discuss'),
+                        class: this.data.discuss_progress ? 'btn-discuss-progress' : null,
+                        html: `<span class="fa-solid fa-comments"></span> 토론`
+                    });
+                    this.main.push({
                         to: this.doc_action_link(this.data.document, 'history', this.data.rev ? { from: this.data.rev } : undefined),
                         html: `<span class="fa-solid fa-history"></span> 역사`
                     });
-                    this.main.push({
+                    this.menu.push({
                         to: this.doc_action_link(this.data.document, 'acl'),
                         html: `<span class="fa-solid fa-shield"></span> ACL`
                     });
